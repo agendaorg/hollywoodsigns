@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>wiesbaden_03_archive</title>
+  <title>Dead Girls Club // Exclusive Representation &amp; Assignment Agreement</title>
   <style>
-    /* Stark 2003 web default aesthetic */
+    /* 2000s Classic Web Document & Responsive Fluid Layout */
     html, body {
       margin: 0;
       padding: 0;
@@ -16,318 +16,327 @@
       font-family: "Times New Roman", Times, serif;
     }
 
-    .screen-container {
+    body {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 24px;
+      padding: 16px;
       box-sizing: border-box;
+    }
+
+    .doc-container {
+      width: 100%;
+      max-width: 680px;
+      border: 1px solid #7f9db9;
+      background: #ffffff;
+      padding: 20px 24px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 13px;
+      font-weight: bold;
       text-align: center;
+      text-transform: uppercase;
+      margin-top: 0;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 8px;
     }
 
-    .story-block {
-      max-width: 460px;
-      font-size: 15px;
-      line-height: 1.65;
-      color: #000000;
+    .legal-box {
+      font-size: 10px;
+      line-height: 1.35;
+      height: 280px;
+      overflow-y: scroll;
+      border: 1px solid #7f9db9;
+      padding: 12px;
+      margin-bottom: 16px;
+      background: #fdfdfd;
       text-align: left;
-      margin-bottom: 28px;
     }
 
-    .meta-tag {
-      font-size: 12px;
-      color: #555555;
-      margin-bottom: 14px;
-      display: block;
+    .legal-box p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-align: justify;
     }
 
-    /* Classic 2003 clickable text progression */
-    .next-link {
-      color: #0000ee;
-      font-size: 14px;
-      text-decoration: underline;
-      cursor: pointer;
-      background: none;
-      border: none;
+    .form-row {
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (min-width: 480px) {
+      .form-row {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+      label {
+        width: 160px;
+        flex-shrink: 0;
+      }
+      input[type="text"] {
+        flex-grow: 1;
+      }
+    }
+
+    label {
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 4px 6px;
       font-family: "Times New Roman", Times, serif;
-      padding: 0;
+      font-size: 11px;
+      border: 1px solid #7f9db9;
+      box-sizing: border-box;
+      background: #ffffff;
     }
 
-    .next-link:active {
-      color: #ff0000;
+    .sig-section {
+      margin-top: 14px;
+      margin-bottom: 14px;
     }
 
-    /* 7-Second Advisory Static + Eye Takeover Overlay */
-    #advisoryTakeover {
+    .sig-title {
+      font-size: 11px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .canvas-wrapper {
+      width: 100%;
+      border: 1px solid #000000;
+      background: #ffffff;
+      box-sizing: border-box;
+    }
+
+    canvas#sigCanvas {
+      width: 100%;
+      height: 100px;
+      display: block;
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    .sig-actions {
+      font-size: 10px;
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    .sig-actions a {
+      color: #0000ee;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 11px;
+      font-weight: bold;
+      background-color: #efefef;
+      border: 1px solid #7f9db9;
+      cursor: pointer;
+      margin-top: 14px;
+      text-transform: uppercase;
+    }
+
+    .submit-btn:active {
+      background-color: #cccccc;
+    }
+
+    /* Processing Screen with Pure Blank White Background and Unboxed Text */
+    #successView {
       display: none;
       position: fixed;
       inset: 0;
-      background-color: #000000;
-      z-index: 999;
+      background-color: #ffffff;
+      z-index: 9999;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
 
-    #staticCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      image-rendering: pixelated;
-    }
-
-    #advisoryEyeCanvas {
-      position: relative;
-      z-index: 10;
-      display: block;
-      image-rendering: pixelated;
-    }
-
-    /* Final Video Stage */
-    #videoStage {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 500px;
-    }
-
-    .video-frame {
-      width: 100%;
-      border: 1px solid #7f9db9;
-      background-color: #000000;
-      padding: 2px;
-      margin-bottom: 18px;
-      box-sizing: border-box;
-    }
-
-    video {
-      display: block;
-      width: 100%;
-      height: auto;
-      background: #000000;
-    }
-
-    .footer-nav {
-      margin-top: 10px;
-      font-size: 13px;
-    }
-
-    a {
-      color: #0000ee;
-      text-decoration: underline;
-    }
-
-    a:active {
-      color: #ff0000;
+    #animDeadGirls {
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: lowercase;
+      margin: 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- 7-Second Fullscreen Static & Eye Advisory Takeover -->
-  <div id="advisoryTakeover">
-    <canvas id="staticCanvas"></canvas>
-    <canvas id="advisoryEyeCanvas" width="260" height="140"></canvas>
-  </div>
-
-  <div class="screen-container">
+<div class="doc-container">
+  
+  <!-- Active Contract Form View -->
+  <div id="formView">
+    <h1>EXCLUSIVE TALENT REPRESENTATION, ASSET ASSIGNMENT &amp; PERPETUAL LICENSING AGREEMENT</h1>
     
-    <!-- Text Progression Stage -->
-    <div id="textStage">
-      <div class="story-block">
-        <span class="meta-tag" id="stepCounter">[ 01 / 04 ]</span>
-        <div id="storyText"></div>
-      </div>
-      <button class="next-link" id="nextBtn" onclick="advanceStory()">continue &gt;&gt;</button>
+    <div class="legal-box">
+      <p><b>1. Grant of Absolute Global Rights:</b> The undersigned principal ("Assignor") hereby irrevocably, unconditionally, and exclusively assigns, transfers, grants, and conveys to Dead Girls Club ("Management") all rights, title, interest, and ownership worldwide in and to Assignor's public persona, legal identity, professional likeness, voice, physical appearance, biological data, biometric profiles, personal history, narrative backstory, and all derivative manifestations across all media formats, platforms, and technologies now known or hereafter devised, in perpetuity throughout the universe without limitation.</p>
+      
+      <p><b>2. Assignment of Creative Output & Intellectual Property:</b> Assignor stipulates that all artistic output, commercial projects, written works, recorded audio/visual material, unreleased drafts, spontaneous public statements, private communications, social media activity, and conceptual ideas generated, conceived, recorded, or uttered by Assignor—whether during the active term of this agreement, prior thereto, or posthumously—are the sole, absolute, unencumbered, and exclusive property of Management from the precise moment of inception. Assignor explicitly relinquishes all claims to secondary royalties, backend distribution shares, publishing residuals, merchandising cuts, performance fees, and moral rights.</p>
+
+      <p><b>3. Perpetual Likeness, Essence & Metaphysical Transfer:</b> Assignor explicitly acknowledges, warrants, and agrees that Management possesses unlimited, unfettered authority to utilize, replicate, synthesize, alter, archive, broadcast, monetize, or digitally simulate Assignor's physical likeness, voice parameters, behavioral patterns, and permanent spiritual, psychological, or metaphysical essence (inclusive of post-mortem digital avatar generation, neural cloning, synthetic media modeling, and eternal archival storage). Management is under no obligation to provide financial compensation, credit, acknowledgment, or notification regarding any commercial, private, or experimental deployment of Assignor's transferred identity vectors.</p>
+
+      <p><b>4. Zero Compensation & Financial Waiver:</b> In consideration for the complete and total transfer of all personal autonomy, commercial rights, and identity ownership, Assignor shall receive zero (0) baseline monetary compensation, salary, advance, or stipend. All generated revenues, commercial yields, brand syndication profits, licensing windfalls, and intellectual property assets derived from Assignor's name, likeness, or labor shall be retained entirely by Management to offset administrative, legal, storage, and operational overhead. Assignor expressly waives any right to audit management accounts, request financial disclosures, inspect ledger books, or claim restitution of any kind.</p>
+
+      <p><b>5. Behavioral Compliance, Covenants & Control:</b> Assignor agrees to maintain absolute, uncritical compliance with all operational, aesthetic, behavioral, and logistical directives issued by Management. Assignor shall not engage in any independent public appearances, unapproved social commentary, secondary contract negotiations, lifestyle modifications, medical procedures, or relational associations without prior written authorization from Management. Any unauthorized action, attempted contract rescission, public dissent, or breach of confidentiality shall trigger an immediate liquidated damages assessment against Assignor, alongside total forfeiture of all personal property, bank accounts, and permanent civil/criminal injunctions enforceable across all global jurisdictions.</p>
+
+      <p><b>6. Indemnification & Liability Assumption:</b> Assignor agrees to fully indemnify, defend, and hold harmless Management from any and all legal claims, liabilities, damages, costs, or losses arising from Assignor's prior history, present conduct, or future actions. Management assumes no liability for Assignor's physical welfare, psychological stability, legal standing, or personal safety.</p>
+
+      <p><b>7. Term, Irrevocability & Post-Mortem Extension:</b> This agreement takes effect immediately upon execution and remains in binding legal force for the duration of Assignor's natural life, extending automatically, unconditionally, and indefinitely into post-mortem estate management and eternity. This contract is strictly irrevocable; no cancellation clauses, cooling-off periods, right-to-cure provisions, or unilateral termination mechanisms exist under any circumstances. By affixing a signature below, Assignor warrants full legal capacity, acknowledges that they have read and understood every provision (regardless of length or dense legal phrasing, which Assignor acknowledges they chose not to thoroughly review), and enters this agreement entirely under their own free will while fully cognizant that all autonomous existence, labor, and likeness are permanently transferred to Management with zero recourse.</p>
     </div>
 
-    <!-- Raw Footage Stage (Loads footage.mp4 automatically after advisory) -->
-    <div id="videoStage">
-      <div class="video-frame">
-        <video id="archiveVideo" src="images/footage.mp4" controls playsinline></video>
-      </div>
-      <div class="footer-nav">
-        <a href="index.html">&lt; return</a>
-      </div>
-    </div>
+    <form action="https://api.web3forms.com/submit" method="POST" id="contractForm">
+      
+      <!-- Web3Forms Configuration Inputs -->
+      <input type="hidden" name="apikey" value="72247000-1724-4fa1-a0a8-5a91c8e35a93">
+      <input type="hidden" name="subject" value="New DGC Ironclad Contract Execution">
+      <input type="hidden" name="email_to" value="deadgirlsclub@aol.com">
+      <input type="hidden" name="redirect" value="https://deadgirls.org">
+      <input type="hidden" name="from_name" value="Dead Girls Club Legal Division">
 
+      <div class="form-row">
+        <label for="name">Full Legal Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Enter exact government name">
+      </div>
+
+      <div class="form-row">
+        <label for="jurisdiction">Primary Jurisdiction:</label>
+        <input type="text" id="jurisdiction" name="jurisdiction" required placeholder="City, State / Country">
+      </div>
+
+      <div class="form-row">
+        <label for="email">Contact Email:</label>
+        <input type="text" id="email" name="email" required placeholder="For administrative routing">
+      </div>
+
+      <!-- Hidden Base64 Signature Payload -->
+      <input type="hidden" name="signature_image" id="signatureData">
+
+      <div class="sig-section">
+        <span class="sig-title">Handwritten Signature (Required for Execution):</span>
+        <div class="canvas-wrapper">
+          <canvas id="sigCanvas"></canvas>
+        </div>
+        <div class="sig-actions">
+          <a onclick="clearPad()">[ clear signature ]</a>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" onclick="submitContract(event)">FINALIZE BINDING CONTRACT</button>
+    </form>
   </div>
 
-  <script>
-    const chapters = [
-      "Wiesbaden, Germany — March 2003.<br><br>Just north of the city, where the suburban roads narrow into the wooded hills of the Taunus ridge, sat an abandoned compound left over from the late Cold War. Officially, municipal records listed it as an old telecommunications relay post that had been decommissioned and sold off to private holdings in 1998.",
-      "Among local teenagers in Wiesbaden, the property had a very different reputation. After the private sale, locals noticed heavily tinted vans using the back access road late at night, and rumors quickly spread across German message boards about what the shell company—a defunct media-management subsidiary—was actually running inside.",
-      "The prevailing theory was that the compound functioned as an off-the-books private clinic and behavioral conditioning facility used by European record labels and talent agencies. Whenever a young pop act or television personality suffered a public breakdown or breached contract, they were allegedly sent there out of the press eye—subjected to isolation and closed-circuit psychological compliance sessions until they were ready to return to the public.",
-      "By early 2003, the parent company had dissolved and the site appeared completely stripped and abandoned. On a Friday night in March, four local teenagers hiked up past the perimeter fence with a MiniDV camcorder to film what was left inside.<br><br>The clip that follows is the only segment recovered from the tape before they ran out of the building."
+</div>
+
+<!-- Fullscreen Blank White Screen with Unboxed Small Text Animation -->
+<div id="successView">
+  <div id="animDeadGirls">dead girls</div>
+</div>
+
+<script>
+  // High-precision responsive signature canvas initialization
+  const canvas = document.getElementById('sigCanvas');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+
+  function resizeCanvas() {
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * ratio;
+    canvas.height = rect.height * ratio;
+    ctx.scale(ratio, ratio);
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 1.75;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function getMousePos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+    return {
+      x: clientX - rect.left,
+      y: clientY - rect.top
+    };
+  }
+
+  canvas.addEventListener('mousedown', (e) => { drawing = true; const pos = getMousePos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); });
+  canvas.addEventListener('mousemove', (e) => { if (!drawing) return; const pos = getMousePos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); });
+  window.addEventListener('mouseup', () => { drawing = false; });
+
+  canvas.addEventListener('touchstart', (e) => { drawing = true; const pos = getMousePos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); e.preventDefault(); }, {passive: false});
+  canvas.addEventListener('touchmove', (e) => { if (!drawing) return; const pos = getMousePos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); e.preventDefault(); }, {passive: false});
+  window.addEventListener('touchend', () => { drawing = false; });
+
+  function clearPad() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function submitContract(e) {
+    e.preventDefault();
+    const nameInput = document.getElementById('name').value.trim();
+    const jurisdictionInput = document.getElementById('jurisdiction').value.trim();
+    const emailInput = document.getElementById('email').value.trim();
+
+    if(!nameInput || !jurisdictionInput || !emailInput) {
+      alert('All contract fields must be completed prior to execution.');
+      return;
+    }
+
+    // Capture canvas signature data
+    document.getElementById('signatureData').value = canvas.toDataURL('image/png');
+
+    // Switch view to fullscreen blank white screen with unboxed animation
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('successView').style.display = 'flex';
+
+    // Font-cycling animation loop strictly for "dead girls" at a small text size with zero boxing
+    const fontPool = [
+      '"Times New Roman", Times, serif',
+      'Courier New, Courier, monospace',
+      'Arial, Helvetica, sans-serif',
+      'Georgia, serif',
+      'Impact, sans-serif',
+      'Verdana, Geneva, sans-serif',
+      'Trebuchet MS, sans-serif'
     ];
 
-    let currentStep = 0;
-    const storyTextEl = document.getElementById('storyText');
-    const stepCounterEl = document.getElementById('stepCounter');
-    const nextBtnEl = document.getElementById('nextBtn');
-    const textStageEl = document.getElementById('textStage');
-    const videoStageEl = document.getElementById('videoStage');
-    const archiveVideoEl = document.getElementById('archiveVideo');
+    const animEl = document.getElementById('animDeadGirls');
+    const fontInterval = setInterval(() => {
+      const randomFont = fontPool[Math.floor(Math.random() * fontPool.length)];
+      const randomWeight = Math.random() > 0.5 ? 'bold' : 'normal';
+      const randomStyle = Math.random() > 0.7 ? 'italic' : 'normal';
+      animEl.style.fontFamily = randomFont;
+      animEl.style.fontWeight = randomWeight;
+      animEl.style.fontStyle = randomStyle;
+    }, 140);
 
-    // Initialize first slide
-    storyTextEl.innerHTML = chapters[0];
-
-    function advanceStory() {
-      currentStep++;
-
-      if (currentStep < chapters.length) {
-        stepCounterEl.textContent = `[ 0${currentStep + 1} / 0${chapters.length} ]`;
-        storyTextEl.innerHTML = chapters[currentStep];
-
-        if (currentStep === chapters.length - 1) {
-          nextBtnEl.textContent = "watch recovered footage >>";
-        }
-      } else {
-        // Trigger 7-second static + eye takeover before revealing footage.mp4
-        textStageEl.style.display = 'none';
-        triggerAdvisoryTakeover();
-      }
-    }
-
-    function triggerAdvisoryTakeover() {
-      const takeover = document.getElementById('advisoryTakeover');
-      const staticCanvas = document.getElementById('staticCanvas');
-      const sCtx = staticCanvas.getContext('2d');
-      const eyeCanvas = document.getElementById('advisoryEyeCanvas');
-      const eCtx = eyeCanvas.getContext('2d');
-
-      takeover.style.display = 'flex';
-
-      staticCanvas.width = 240;
-      staticCanvas.height = 180;
-
-      // --- Web Audio API: Analog Static & 60Hz Hum Burst ---
-      let audioCtx = null;
-      let masterGain = null;
-      try {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContext();
-        masterGain = audioCtx.createGain();
-        masterGain.gain.setValueAtTime(0.45, audioCtx.currentTime);
-        masterGain.connect(audioCtx.destination);
-
-        const bufferSize = audioCtx.sampleRate * 2;
-        const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-        const output = noiseBuffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-          const crackle = Math.random() > 0.996 ? (Math.random() * 2 - 1) * 1.5 : 1;
-          output[i] = (Math.random() * 2 - 1) * crackle;
-        }
-
-        const whiteNoise = audioCtx.createBufferSource();
-        whiteNoise.buffer = noiseBuffer;
-        whiteNoise.loop = true;
-
-        const filter = audioCtx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.value = 1400;
-        filter.Q.value = 0.6;
-
-        whiteNoise.connect(filter);
-        filter.connect(masterGain);
-        whiteNoise.start(0);
-
-        const humOsc = audioCtx.createOscillator();
-        const humGain = audioCtx.createGain();
-        humOsc.type = 'sawtooth';
-        humOsc.frequency.setValueAtTime(60, audioCtx.currentTime);
-        humGain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-        humOsc.connect(humGain);
-        humGain.connect(masterGain);
-        humOsc.start(0);
-      } catch (e) {}
-
-      // --- Visual Loop: TV Snow + Stark Advisory Eye ---
-      let running = true;
-      let frame = 0;
-      const imgData = sCtx.createImageData(staticCanvas.width, staticCanvas.height);
-      const buffer32 = new Uint32Array(imgData.data.buffer);
-
-      function renderTakeover() {
-        if (!running) return;
-        frame++;
-
-        for (let i = 0; i < buffer32.length; i++) {
-          const val = Math.random() > 0.5 ? (180 + Math.random() * 75) | 0 : (Math.random() * 65) | 0;
-          buffer32[i] = (255 << 24) | (val << 16) | (val << 8) | val;
-        }
-        sCtx.putImageData(imgData, 0, 0);
-
-        if (Math.random() > 0.65) {
-          const tearY = Math.random() * staticCanvas.height;
-          const tearH = 4 + Math.random() * 14;
-          sCtx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.85)';
-          sCtx.fillRect(0, tearY, staticCanvas.width, tearH);
-        }
-
-        eCtx.clearRect(0, 0, eyeCanvas.width, eyeCanvas.height);
-        const cx = eyeCanvas.width / 2 + (Math.random() - 0.5) * 3;
-        const cy = eyeCanvas.height / 2 + (Math.random() - 0.5) * 3;
-
-        eCtx.fillStyle = '#ffffff';
-        eCtx.strokeStyle = '#000000';
-        eCtx.lineWidth = 4;
-
-        eCtx.beginPath();
-        eCtx.moveTo(cx - 88, cy);
-        eCtx.quadraticCurveTo(cx, cy - 52, cx + 88, cy);
-        eCtx.quadraticCurveTo(cx, cy + 52, cx - 88, cy);
-        eCtx.closePath();
-        eCtx.fill();
-        eCtx.stroke();
-
-        const isGlitchBlink = (frame > 95 && frame < 103) || (frame > 240 && frame < 247);
-
-        if (isGlitchBlink) {
-          eCtx.beginPath();
-          eCtx.moveTo(cx - 72, cy);
-          eCtx.lineTo(cx + 72, cy);
-          eCtx.stroke();
-        } else {
-          const dartX = (Math.random() > 0.85) ? (Math.random() - 0.5) * 14 : 0;
-          const dartY = (Math.random() > 0.85) ? (Math.random() - 0.5) * 6 : 0;
-
-          eCtx.strokeStyle = '#000000';
-          eCtx.lineWidth = 2.5;
-          eCtx.beginPath();
-          eCtx.arc(cx + dartX, cy + dartY, 22, 0, Math.PI * 2);
-          eCtx.stroke();
-
-          eCtx.fillStyle = '#000000';
-          eCtx.beginPath();
-          eCtx.arc(cx + dartX, cy + dartY, 12, 0, Math.PI * 2);
-          eCtx.fill();
-
-          eCtx.fillStyle = '#ffffff';
-          eCtx.fillRect(cx + dartX + 4, cy + dartY - 6, 4, 4);
-        }
-
-        requestAnimationFrame(renderTakeover);
-      }
-
-      renderTakeover();
-
-      // Cut to footage.mp4 after exactly 7 seconds
-      setTimeout(() => {
-        running = false;
-        if (audioCtx) {
-          audioCtx.close().catch(() => {});
-        }
-        takeover.style.display = 'none';
-        videoStageEl.style.display = 'flex';
-        archiveVideoEl.play().catch(() => {});
-      }, 7000);
-    }
-  </script>
+    // Submit form payload programmatically after looping delay, triggering Web3Forms delivery to deadgirlsclub@aol.com and redirecting to deadgirls.org
+    setTimeout(() => {
+      clearInterval(fontInterval);
+      document.getElementById('contractForm').submit();
+    }, 2200);
+  }
+</script>
 
 </body>
 </html>
