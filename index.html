@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wiesbaden_03_archive</title>
+  <style>
+    /* Stark 2003 web default aesthetic */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #ffffff;
+      color: #000000;
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    .screen-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .story-block {
+      max-width: 460px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #000000;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .meta-tag {
+      font-size: 12px;
+      color: #555555;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    /* Classic 2003 clickable text progression */
+    .next-link {
+      color: #0000ee;
+      font-size: 14px;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: "Times New Roman", Times, serif;
+      padding: 0;
+    }
+
+    .next-link:active {
+      color: #ff0000;
+    }
+
+    /* 7-Second Advisory Static + Eye Takeover Overlay */
+    #advisoryTakeover {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: #000000;
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #staticCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      image-rendering: pixelated;
+    }
+
+    #advisoryEyeCanvas {
+      position: relative;
+      z-index: 10;
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    /* Final Video Stage */
+    #videoStage {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .video-frame {
+      width: 100%;
+      border: 1px solid #7f9db9;
+      background-color: #000000;
+      padding: 2px;
+      margin-bottom: 18px;
+      box-sizing: border-box;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #000000;
+    }
+
+    .footer-nav {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    a {
+      color: #0000ee;
+      text-decoration: underline;
+    }
+
+    a:active {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 7-Second Fullscreen Static & Eye Advisory Takeover -->
+  <div id="advisoryTakeover">
+    <canvas id="staticCanvas"></canvas>
+    <canvas id="advisoryEyeCanvas" width="260" height="140"></canvas>
+  </div>
+
+  <div class="screen-container">
+    
+    <!-- Text Progression Stage -->
+    <div id="textStage">
+      <div class="story-block">
+        <span class="meta-tag" id="stepCounter">[ 01 / 04 ]</span>
+        <div id="storyText"></div>
+      </div>
+      <button class="next-link" id="nextBtn" onclick="advanceStory()">continue &gt;&gt;</button>
+    </div>
+
+    <!-- Raw Footage Stage (Loads footage.mp4 automatically after advisory) -->
+    <div id="videoStage">
+      <div class="video-frame">
+        <video id="archiveVideo" src="images/footage.mp4" controls playsinline></video>
+      </div>
+      <div class="footer-nav">
+        <a href="index.html">&lt; return</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const chapters = [
+      "Wiesbaden, Germany — March 2003.<br><br>Just north of the city, where the suburban roads narrow into the wooded hills of the Taunus ridge, sat an abandoned compound left over from the late Cold War. Officially, municipal records listed it as an old telecommunications relay post that had been decommissioned and sold off to private holdings in 1998.",
+      "Among local teenagers in Wiesbaden, the property had a very different reputation. After the private sale, locals noticed heavily tinted vans using the back access road late at night, and rumors quickly spread across German message boards about what the shell company—a defunct media-management subsidiary—was actually running inside.",
+      "The prevailing theory was that the compound functioned as an off-the-books private clinic and behavioral conditioning facility used by European record labels and talent agencies. Whenever a young pop act or television personality suffered a public breakdown or breached contract, they were allegedly sent there out of the press eye—subjected to isolation and closed-circuit psychological compliance sessions until they were ready to return to the public.",
+      "By early 2003, the parent company had dissolved and the site appeared completely stripped and abandoned. On a Friday night in March, four local teenagers hiked up past the perimeter fence with a MiniDV camcorder to film what was left inside.<br><br>The clip that follows is the only segment recovered from the tape before they ran out of the building."
+    ];
+
+    let currentStep = 0;
+    const storyTextEl = document.getElementById('storyText');
+    const stepCounterEl = document.getElementById('stepCounter');
+    const nextBtnEl = document.getElementById('nextBtn');
+    const textStageEl = document.getElementById('textStage');
+    const videoStageEl = document.getElementById('videoStage');
+    const archiveVideoEl = document.getElementById('archiveVideo');
+
+    // Initialize first slide
+    storyTextEl.innerHTML = chapters[0];
+
+    function advanceStory() {
+      currentStep++;
+
+      if (currentStep < chapters.length) {
+        stepCounterEl.textContent = `[ 0${currentStep + 1} / 0${chapters.length} ]`;
+        storyTextEl.innerHTML = chapters[currentStep];
+
+        if (currentStep === chapters.length - 1) {
+          nextBtnEl.textContent = "watch recovered footage >>";
+        }
+      } else {
+        // Trigger 7-second static + eye takeover before revealing footage.mp4
+        textStageEl.style.display = 'none';
+        triggerAdvisoryTakeover();
+      }
+    }
+
+    function triggerAdvisoryTakeover() {
+      const takeover = document.getElementById('advisoryTakeover');
+      const staticCanvas = document.getElementById('staticCanvas');
+      const sCtx = staticCanvas.getContext('2d');
+      const eyeCanvas = document.getElementById('advisoryEyeCanvas');
+      const eCtx = eyeCanvas.getContext('2d');
+
+      takeover.style.display = 'flex';
+
+      staticCanvas.width = 240;
+      staticCanvas.height = 180;
+
+      // --- Web Audio API: Analog Static & 60Hz Hum Burst ---
+      let audioCtx = null;
+      let masterGain = null;
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.45, audioCtx.currentTime);
+        masterGain.connect(audioCtx.destination);
+
+        const bufferSize = audioCtx.sampleRate * 2;
+        const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          const crackle = Math.random() > 0.996 ? (Math.random() * 2 - 1) * 1.5 : 1;
+          output[i] = (Math.random() * 2 - 1) * crackle;
+        }
+
+        const whiteNoise = audioCtx.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+        whiteNoise.loop = true;
+
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.value = 1400;
+        filter.Q.value = 0.6;
+
+        whiteNoise.connect(filter);
+        filter.connect(masterGain);
+        whiteNoise.start(0);
+
+        const humOsc = audioCtx.createOscillator();
+        const humGain = audioCtx.createGain();
+        humOsc.type = 'sawtooth';
+        humOsc.frequency.setValueAtTime(60, audioCtx.currentTime);
+        humGain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+        humOsc.connect(humGain);
+        humGain.connect(masterGain);
+        humOsc.start(0);
+      } catch (e) {}
+
+      // --- Visual Loop: TV Snow + Stark Advisory Eye ---
+      let running = true;
+      let frame = 0;
+      const imgData = sCtx.createImageData(staticCanvas.width, staticCanvas.height);
+      const buffer32 = new Uint32Array(imgData.data.buffer);
+
+      function renderTakeover() {
+        if (!running) return;
+        frame++;
+
+        for (let i = 0; i < buffer32.length; i++) {
+          const val = Math.random() > 0.5 ? (180 + Math.random() * 75) | 0 : (Math.random() * 65) | 0;
+          buffer32[i] = (255 << 24) | (val << 16) | (val << 8) | val;
+        }
+        sCtx.putImageData(imgData, 0, 0);
+
+        if (Math.random() > 0.65) {
+          const tearY = Math.random() * staticCanvas.height;
+          const tearH = 4 + Math.random() * 14;
+          sCtx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.85)';
+          sCtx.fillRect(0, tearY, staticCanvas.width, tearH);
+        }
+
+        eCtx.clearRect(0, 0, eyeCanvas.width, eyeCanvas.height);
+        const cx = eyeCanvas.width / 2 + (Math.random() - 0.5) * 3;
+        const cy = eyeCanvas.height / 2 + (Math.random() - 0.5) * 3;
+
+        eCtx.fillStyle = '#ffffff';
+        eCtx.strokeStyle = '#000000';
+        eCtx.lineWidth = 4;
+
+        eCtx.beginPath();
+        eCtx.moveTo(cx - 88, cy);
+        eCtx.quadraticCurveTo(cx, cy - 52, cx + 88, cy);
+        eCtx.quadraticCurveTo(cx, cy + 52, cx - 88, cy);
+        eCtx.closePath();
+        eCtx.fill();
+        eCtx.stroke();
+
+        const isGlitchBlink = (frame > 95 && frame < 103) || (frame > 240 && frame < 247);
+
+        if (isGlitchBlink) {
+          eCtx.beginPath();
+          eCtx.moveTo(cx - 72, cy);
+          eCtx.lineTo(cx + 72, cy);
+          eCtx.stroke();
+        } else {
+          const dartX = (Math.random() > 0.85) ? (Math.random() - 0.5) * 14 : 0;
+          const dartY = (Math.random() > 0.85) ? (Math.random() - 0.5) * 6 : 0;
+
+          eCtx.strokeStyle = '#000000';
+          eCtx.lineWidth = 2.5;
+          eCtx.beginPath();
+          eCtx.arc(cx + dartX, cy + dartY, 22, 0, Math.PI * 2);
+          eCtx.stroke();
+
+          eCtx.fillStyle = '#000000';
+          eCtx.beginPath();
+          eCtx.arc(cx + dartX, cy + dartY, 12, 0, Math.PI * 2);
+          eCtx.fill();
+
+          eCtx.fillStyle = '#ffffff';
+          eCtx.fillRect(cx + dartX + 4, cy + dartY - 6, 4, 4);
+        }
+
+        requestAnimationFrame(renderTakeover);
+      }
+
+      renderTakeover();
+
+      // Cut to footage.mp4 after exactly 7 seconds
+      setTimeout(() => {
+        running = false;
+        if (audioCtx) {
+          audioCtx.close().catch(() => {});
+        }
+        takeover.style.display = 'none';
+        videoStageEl.style.display = 'flex';
+        archiveVideoEl.play().catch(() => {});
+      }, 7000);
+    }
+  </script>
+
+</body>
+</html>
