@@ -2,26 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dead Girls Club // Exclusive Representation &amp; Assignment Agreement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Dead Girls Club // Exclusive Representation, Assignment &amp; NDA Execution</title>
   <style>
-    /* 2000s Classic Web Document & Responsive Fluid Layout */
+    /* 2000s Classic Web Document & Cross-Device Responsive Layout */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       min-height: 100vh;
-      background-color: #ffffff;
+      min-height: 100dvh;
+      background-color: #000000;
       color: #000000;
       font-family: "Times New Roman", Times, serif;
+      -webkit-text-size-adjust: 100%;
     }
 
-    body {
+    /* Standalone Intro Screen: 8-Second Sequence with Literal Line Blink */
+    #introEyeScreen {
+      position: fixed;
+      inset: 0;
+      background-color: #ffffff;
+      z-index: 9999;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 16px;
-      box-sizing: border-box;
+      transition: opacity 0.6s ease;
+    }
+
+    .eye-wrapper {
+      width: 80px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #eyeSvg {
+      width: 64px;
+      height: 36px;
+      display: block;
+    }
+
+    #pupilGroup {
+      transition: transform 0.8s ease-in-out;
+    }
+
+    /* Main App Container (Hidden initially until 8s intro sequence finishes) */
+    #mainApp {
+      display: none;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background-color: #ffffff;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+    }
+
+    @media (min-width: 600px) {
+      #mainApp {
+        padding: 20px;
+      }
     }
 
     .doc-container {
@@ -29,38 +75,158 @@
       max-width: 680px;
       border: 1px solid #7f9db9;
       background: #ffffff;
-      padding: 20px 24px;
-      box-sizing: border-box;
+      padding: 14px 16px;
+    }
+
+    @media (min-width: 600px) {
+      .doc-container {
+        padding: 20px 24px;
+      }
+    }
+
+    /* Seamless Contract Switcher Tabs */
+    .contract-tabs {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #7f9db9;
+      margin-bottom: 14px;
+      gap: 4px;
+    }
+
+    @media (min-width: 460px) {
+      .contract-tabs {
+        flex-direction: row;
+      }
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 8px 8px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #efefef;
+      color: #555555;
+      border: 1px solid #7f9db9;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      min-height: 34px;
+    }
+
+    @media (min-width: 460px) {
+      .tab-btn {
+        justify-content: center;
+        border-bottom: none;
+        padding: 6px 8px;
+        min-height: auto;
+      }
+      .tab-btn.active {
+        border-bottom: 1px solid #ffffff;
+        margin-bottom: -1px;
+      }
+    }
+
+    .tab-btn.active {
+      background-color: #ffffff;
+      color: #000000;
+      border-color: #000000;
+    }
+
+    @media (min-width: 460px) {
+      .tab-btn.active {
+        border-color: #7f9db9;
+        border-bottom: 1px solid #ffffff;
+      }
+    }
+
+    .tab-status {
+      font-size: 9px;
+      font-weight: normal;
+      padding: 1px 5px;
+      border: 1px solid #7f9db9;
+      background: #fdfdfd;
+      flex-shrink: 0;
+    }
+
+    .tab-status.signed {
+      background: #000000;
+      color: #ffffff;
+      border-color: #000000;
+    }
+
+    .contract-panel {
+      display: none;
+    }
+
+    .contract-panel.active {
+      display: block;
     }
 
     h1 {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
       margin-top: 0;
-      margin-bottom: 16px;
-      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      letter-spacing: 0.4px;
       border-bottom: 1px solid #000000;
       padding-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    @media (min-width: 600px) {
+      h1 {
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
     }
 
     .legal-box {
       font-size: 10px;
-      line-height: 1.35;
-      height: 280px;
+      line-height: 1.38;
+      height: 220px;
       overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
       border: 1px solid #7f9db9;
-      padding: 12px;
-      margin-bottom: 16px;
+      padding: 10px;
+      margin-bottom: 14px;
       background: #fdfdfd;
       text-align: left;
+    }
+
+    @media (min-width: 600px) {
+      .legal-box {
+        height: 270px;
+        padding: 12px;
+      }
     }
 
     .legal-box p {
       margin-top: 0;
       margin-bottom: 10px;
       text-align: justify;
+    }
+
+    .legal-box ul {
+      margin-top: -6px;
+      margin-bottom: 10px;
+      padding-left: 18px;
+    }
+
+    .legal-box li {
+      margin-bottom: 2px;
+    }
+
+    .shared-fields {
+      border-top: 1px dashed #7f9db9;
+      padding-top: 12px;
+      margin-top: 10px;
     }
 
     .form-row {
@@ -87,22 +253,31 @@
     label {
       font-size: 11px;
       font-weight: bold;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
+    /* 16px on mobile prevents iOS Safari auto-zoom on input focus; 11px on desktop */
     input[type="text"] {
       width: 100%;
-      padding: 4px 6px;
+      padding: 6px 8px;
       font-family: "Times New Roman", Times, serif;
-      font-size: 11px;
+      font-size: 16px;
       border: 1px solid #7f9db9;
-      box-sizing: border-box;
       background: #ffffff;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+
+    @media (min-width: 600px) {
+      input[type="text"] {
+        padding: 4px 6px;
+        font-size: 11px;
+      }
     }
 
     .sig-section {
-      margin-top: 14px;
-      margin-bottom: 14px;
+      margin-top: 12px;
+      margin-bottom: 10px;
     }
 
     .sig-title {
@@ -116,45 +291,141 @@
       width: 100%;
       border: 1px solid #000000;
       background: #ffffff;
-      box-sizing: border-box;
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
-    canvas#sigCanvas {
+    canvas.sig-pad {
       width: 100%;
-      height: 100px;
+      height: 110px;
       display: block;
       touch-action: none;
       cursor: crosshair;
     }
 
+    @media (min-width: 600px) {
+      canvas.sig-pad {
+        height: 95px;
+      }
+    }
+
     .sig-actions {
       font-size: 10px;
-      margin-top: 4px;
-      text-align: right;
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
     .sig-actions a {
       color: #0000ee;
       cursor: pointer;
       text-decoration: underline;
+      padding: 2px 0;
+    }
+
+    .switch-prompt {
+      font-size: 10px;
+      color: #333333;
     }
 
     .submit-btn {
       display: block;
       width: 100%;
-      padding: 8px;
+      padding: 10px 8px;
       font-family: "Times New Roman", Times, serif;
       font-size: 11px;
       font-weight: bold;
       background-color: #efefef;
+      color: #000000;
       border: 1px solid #7f9db9;
       cursor: pointer;
-      margin-top: 14px;
+      margin-top: 12px;
       text-transform: uppercase;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+
+    @media (min-width: 600px) {
+      .submit-btn {
+        padding: 8px;
+      }
     }
 
     .submit-btn:active {
       background-color: #cccccc;
+    }
+
+    /* Professional 2000s Modal Confirmation Overlay */
+    #confirmModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 8888;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      border: 2px solid #7f9db9;
+      padding: 18px 20px;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+      text-align: left;
+    }
+
+    .modal-title {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 6px;
+      letter-spacing: 0.4px;
+    }
+
+    .modal-body {
+      font-size: 10.5px;
+      line-height: 1.4;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .modal-btn {
+      flex: 1;
+      padding: 8px;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #efefef;
+      border: 1px solid #7f9db9;
+      cursor: pointer;
+      border-radius: 0;
+    }
+
+    .modal-btn.confirm-yes {
+      background-color: #000000;
+      color: #ffffff;
+      border-color: #000000;
+    }
+
+    .modal-btn:active {
+      background-color: #cccccc;
+      color: #000000;
     }
 
     /* Processing Screen with Pure Blank White Background and Unboxed Text */
@@ -178,138 +449,572 @@
 </head>
 <body>
 
-<div class="doc-container">
-  
-  <!-- Active Contract Form View -->
-  <div id="formView">
-    <h1>EXCLUSIVE TALENT REPRESENTATION, ASSET ASSIGNMENT &amp; PERPETUAL LICENSING AGREEMENT</h1>
-    
-    <div class="legal-box">
-      <p><b>1. Grant of Absolute Global Rights:</b> The undersigned principal ("Assignor") hereby irrevocably, unconditionally, and exclusively assigns, transfers, grants, and conveys to Dead Girls Club ("Management") all rights, title, interest, and ownership worldwide in and to Assignor's public persona, legal identity, professional likeness, voice, physical appearance, biological data, biometric profiles, personal history, narrative backstory, and all derivative manifestations across all media formats, platforms, and technologies now known or hereafter devised, in perpetuity throughout the universe without limitation.</p>
-      
-      <p><b>2. Assignment of Creative Output & Intellectual Property:</b> Assignor stipulates that all artistic output, commercial projects, written works, recorded audio/visual material, unreleased drafts, spontaneous public statements, private communications, social media activity, and conceptual ideas generated, conceived, recorded, or uttered by Assignor—whether during the active term of this agreement, prior thereto, or posthumously—are the sole, absolute, unencumbered, and exclusive property of Management from the precise moment of inception. Assignor explicitly relinquishes all claims to secondary royalties, backend distribution shares, publishing residuals, merchandising cuts, performance fees, and moral rights.</p>
-
-      <p><b>3. Perpetual Likeness, Essence & Metaphysical Transfer:</b> Assignor explicitly acknowledges, warrants, and agrees that Management possesses unlimited, unfettered authority to utilize, replicate, synthesize, alter, archive, broadcast, monetize, or digitally simulate Assignor's physical likeness, voice parameters, behavioral patterns, and permanent spiritual, psychological, or metaphysical essence (inclusive of post-mortem digital avatar generation, neural cloning, synthetic media modeling, and eternal archival storage). Management is under no obligation to provide financial compensation, credit, acknowledgment, or notification regarding any commercial, private, or experimental deployment of Assignor's transferred identity vectors.</p>
-
-      <p><b>4. Zero Compensation & Financial Waiver:</b> In consideration for the complete and total transfer of all personal autonomy, commercial rights, and identity ownership, Assignor shall receive zero (0) baseline monetary compensation, salary, advance, or stipend. All generated revenues, commercial yields, brand syndication profits, licensing windfalls, and intellectual property assets derived from Assignor's name, likeness, or labor shall be retained entirely by Management to offset administrative, legal, storage, and operational overhead. Assignor expressly waives any right to audit management accounts, request financial disclosures, inspect ledger books, or claim restitution of any kind.</p>
-
-      <p><b>5. Behavioral Compliance, Covenants & Control:</b> Assignor agrees to maintain absolute, uncritical compliance with all operational, aesthetic, behavioral, and logistical directives issued by Management. Assignor shall not engage in any independent public appearances, unapproved social commentary, secondary contract negotiations, lifestyle modifications, medical procedures, or relational associations without prior written authorization from Management. Any unauthorized action, attempted contract rescission, public dissent, or breach of confidentiality shall trigger an immediate liquidated damages assessment against Assignor, alongside total forfeiture of all personal property, bank accounts, and permanent civil/criminal injunctions enforceable across all global jurisdictions.</p>
-
-      <p><b>6. Indemnification & Liability Assumption:</b> Assignor agrees to fully indemnify, defend, and hold harmless Management from any and all legal claims, liabilities, damages, costs, or losses arising from Assignor's prior history, present conduct, or future actions. Management assumes no liability for Assignor's physical welfare, psychological stability, legal standing, or personal safety.</p>
-
-      <p><b>7. Term, Irrevocability & Post-Mortem Extension:</b> This agreement takes effect immediately upon execution and remains in binding legal force for the duration of Assignor's natural life, extending automatically, unconditionally, and indefinitely into post-mortem estate management and eternity. This contract is strictly irrevocable; no cancellation clauses, cooling-off periods, right-to-cure provisions, or unilateral termination mechanisms exist under any circumstances. By affixing a signature below, Assignor warrants full legal capacity, acknowledges that they have read and understood every provision (regardless of length or dense legal phrasing, which Assignor acknowledges they chose not to thoroughly review), and enters this agreement entirely under their own free will while fully cognizant that all autonomous existence, labor, and likeness are permanently transferred to Management with zero recourse.</p>
+  <!-- Standalone Intro Screen: 8-Second Eye Animation Sequence -->
+  <div id="introEyeScreen">
+    <div class="eye-wrapper">
+      <svg id="eyeSvg" viewBox="0 0 60 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 16 Q30 -8 58 16 Q30 40 2 16 Z" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+        <g id="pupilGroup">
+          <circle cx="30" cy="16" r="8" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+          <circle cx="30" cy="16" r="3.5" fill="#000000"/>
+        </g>
+      </svg>
     </div>
-
-    <form action="https://api.web3forms.com/submit" method="POST" id="contractForm">
-      
-      <!-- Web3Forms Configuration Inputs -->
-      <input type="hidden" name="apikey" value="72247000-1724-4fa1-a0a8-5a91c8e35a93">
-      <input type="hidden" name="subject" value="New DGC Ironclad Contract Execution">
-      <input type="hidden" name="email_to" value="deadgirlsclub@aol.com">
-      <input type="hidden" name="redirect" value="https://deadgirls.org">
-      <input type="hidden" name="from_name" value="Dead Girls Club Legal Division">
-
-      <div class="form-row">
-        <label for="name">Full Legal Name:</label>
-        <input type="text" id="name" name="name" required placeholder="Enter exact government name">
-      </div>
-
-      <div class="form-row">
-        <label for="jurisdiction">Primary Jurisdiction:</label>
-        <input type="text" id="jurisdiction" name="jurisdiction" required placeholder="City, State / Country">
-      </div>
-
-      <div class="form-row">
-        <label for="email">Contact Email:</label>
-        <input type="text" id="email" name="email" required placeholder="For administrative routing">
-      </div>
-
-      <!-- Hidden Base64 Signature Payload -->
-      <input type="hidden" name="signature_image" id="signatureData">
-
-      <div class="sig-section">
-        <span class="sig-title">Handwritten Signature (Required):</span>
-        <div class="canvas-wrapper">
-          <canvas id="sigCanvas"></canvas>
-        </div>
-        <div class="sig-actions">
-          <a onclick="clearPad()">[ clear signature ]</a>
-        </div>
-      </div>
-
-      <button type="submit" class="submit-btn" onclick="submitContract(event)">FINALIZE BINDING CONTRACT</button>
-    </form>
   </div>
 
-</div>
+  <!-- Main Contract Application Wrapper -->
+  <div id="mainApp">
+    <div class="doc-container">
+      
+      <!-- Active Contract Form View -->
+      <div id="formView">
 
-<!-- Fullscreen Blank White Screen with Unboxed Small Text Animation -->
-<div id="successView">
-  <div id="animDeadGirls">dead girls</div>
-</div>
+        <!-- Seamless Contract Switcher Tabs -->
+        <div class="contract-tabs">
+          <button type="button" class="tab-btn active" id="tabBtn1" onclick="switchContract(1)">
+            <span>I. Representation &amp; Assignment</span>
+            <span class="tab-status" id="status1">UNSIGNED</span>
+          </button>
+          <button type="button" class="tab-btn" id="tabBtn2" onclick="switchContract(2)">
+            <span>II. Confidentiality &amp; NDA</span>
+            <span class="tab-status" id="status2">UNSIGNED</span>
+          </button>
+        </div>
+
+        <form action="https://api.web3forms.com/submit" method="POST" id="contractForm">
+          
+          <!-- Web3Forms Configuration Inputs -->
+          <input type="hidden" name="apikey" value="72247000-1724-4fa1-a0a8-5a91c8e35a93">
+          <input type="hidden" name="subject" value="New DGC Dual Contract Execution (Representation + NDA)">
+          <input type="hidden" name="email_to" value="deadgirlsclub@aol.com">
+          <input type="hidden" name="redirect" value="https://deadgirls.org">
+          <input type="hidden" name="from_name" value="Dead Girls Club Legal Division">
+          <input type="hidden" name="agreements_executed" value="1. Exclusive Talent Representation, Asset Assignment & Perpetual Licensing Agreement | 2. Proprietary Information, Intellectual Property, Confidentiality and Non-Disclosure Agreement">
+
+          <!-- CONTRACT 1 PANEL -->
+          <div class="contract-panel active" id="panel1">
+            <h1>EXCLUSIVE TALENT REPRESENTATION, ASSET ASSIGNMENT &amp; PERPETUAL LICENSING AGREEMENT</h1>
+            
+            <div class="legal-box">
+              <p><b>1. Grant of Absolute Global Rights:</b> The undersigned principal ("Assignor") hereby irrevocably, unconditionally, and exclusively assigns, transfers, grants, and conveys to Dead Girls Club ("Management") all rights, title, interest, and ownership worldwide in and to Assignor's public persona, legal identity, professional likeness, voice, physical appearance, biological data, biometric profiles, personal history, narrative backstory, and all derivative manifestations across all media formats, platforms, and technologies now known or hereafter devised, in perpetuity throughout the universe without limitation.</p>
+              
+              <p><b>2. Assignment of Creative Output &amp; Intellectual Property:</b> Assignor stipulates that all artistic output, commercial projects, written works, recorded audio/visual material, unreleased drafts, spontaneous public statements, private communications, social media activity, and conceptual ideas generated, conceived, recorded, or uttered by Assignor—whether during the active term of this agreement, prior thereto, or posthumously—are the sole, absolute, unencumbered, and exclusive property of Management from the precise moment of inception. Assignor explicitly relinquishes all claims to secondary royalties, backend distribution shares, publishing residuals, merchandising cuts, performance fees, and moral rights.</p>
+
+              <p><b>3. Perpetual Likeness, Essence &amp; Metaphysical Transfer:</b> Assignor explicitly acknowledges, warrants, and agrees that Management possesses unlimited, unfettered authority to utilize, replicate, synthesize, alter, archive, broadcast, monetize, or digitally simulate Assignor's physical likeness, voice parameters, behavioral patterns, and permanent spiritual, psychological, or metaphysical essence (inclusive of post-mortem digital avatar generation, neural cloning, synthetic media modeling, and eternal archival storage). Management is under no obligation to provide financial compensation, credit, acknowledgment, or notification regarding any commercial, private, or experimental deployment of Assignor's transferred identity vectors.</p>
+
+              <p><b>4. Zero Compensation &amp; Financial Waiver:</b> In consideration for the complete and total transfer of all personal autonomy, commercial rights, and identity ownership, Assignor shall receive zero (0) baseline monetary compensation, salary, advance, or stipend. All generated revenues, commercial yields, brand syndication profits, licensing windfalls, and intellectual property assets derived from Assignor's name, likeness, or labor shall be retained entirely by Management to offset administrative, legal, storage, and operational overhead. Assignor expressly waives any right to audit management accounts, request financial disclosures, inspect ledger books, or claim restitution of any kind.</p>
+
+              <p><b>5. Behavioral Compliance, Covenants &amp; Control:</b> Assignor agrees to maintain absolute, uncritical compliance with all operational, aesthetic, behavioral, and logistical directives issued by Management. Assignor shall not engage in any independent public appearances, unapproved social commentary, secondary contract negotiations, lifestyle modifications, medical procedures, or relational associations without prior written authorization from Management. Any unauthorized action, attempted contract rescission, public dissent, or breach of confidentiality shall trigger an immediate liquidated damages assessment against Assignor, alongside total forfeiture of all personal property, bank accounts, and permanent civil/criminal injunctions enforceable across all global jurisdictions.</p>
+
+              <p><b>6. Indemnification &amp; Liability Assumption:</b> Assignor agrees to fully indemnify, defend, and hold harmless Management from any and all legal claims, liabilities, damages, costs, or losses arising from Assignor's prior history, present conduct, or future actions. Management assumes no liability for Assignor's physical welfare, psychological stability, legal standing, or personal safety.</p>
+
+              <p><b>7. Term, Irrevocability &amp; Post-Mortem Extension:</b> This agreement takes effect immediately upon execution and remains in binding legal force for the duration of Assignor's natural life, extending automatically, unconditionally, and indefinitely into post-mortem estate management and eternity. This contract is strictly irrevocable; no cancellation clauses, cooling-off periods, right-to-cure provisions, or unilateral termination mechanisms exist under any circumstances. By affixing a signature below, Assignor warrants full legal capacity, acknowledges that they have read and understood every provision (regardless of length or dense legal phrasing, which Assignor acknowledges they chose not to thoroughly review), and enters this agreement entirely under their own free will while fully cognizant that all autonomous existence, labor, and likeness are permanently transferred to Management with zero recourse.</p>
+            </div>
+
+            <div class="sig-section">
+              <span class="sig-title">Signature I — Representation &amp; Assignment Agreement (Required):</span>
+              <div class="canvas-wrapper">
+                <canvas id="sigCanvas1" class="sig-pad"></canvas>
+              </div>
+              <div class="sig-actions">
+                <span class="switch-prompt">Next: <a onclick="switchContract(2)">Switch to Agreement II (NDA) &rarr;</a></span>
+                <a onclick="clearPad(1)">[ clear signature I ]</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTRACT 2 PANEL (NDA) -->
+          <div class="contract-panel" id="panel2">
+            <h1>PROPRIETARY INFORMATION, INTELLECTUAL PROPERTY, CONFIDENTIALITY AND NON-DISCLOSURE AGREEMENT</h1>
+            
+            <div class="legal-box">
+              <p><b>1. PURPOSE</b><br>
+              Recipient acknowledges that Dead Girls Club ("DGC") develops, manages, collects, archives, publishes, licenses, curates, acquires, maintains, and protects proprietary organizational information, intellectual property, business information, operational systems, archives, member records, publications, branding assets, technological assets, commercial opportunities, and strategic initiatives.<br>
+              Access to such information is conditioned upon execution of this Agreement.</p>
+
+              <p><b>2. EXTREMELY BROAD DEFINITION OF CONFIDENTIAL INFORMATION</b><br>
+              Confidential Information includes all information not publicly released by DGC, whether or not marked confidential.<br>
+              Confidential Information includes:</p>
+              <ul>
+                <li>Internal communications</li>
+                <li>Membership databases</li>
+                <li>Administrative systems</li>
+                <li>Operational procedures</li>
+                <li>Organizational structures</li>
+                <li>Personnel information</li>
+                <li>Contributor information</li>
+                <li>Partner information</li>
+                <li>Financial information</li>
+                <li>Business plans</li>
+                <li>Growth plans</li>
+                <li>Publications prior to release</li>
+                <li>Editorial calendars</li>
+                <li>Creative concepts</li>
+                <li>Visual identity systems</li>
+                <li>Branding strategies</li>
+                <li>Marketing strategies</li>
+                <li>Software systems</li>
+                <li>Website administration systems</li>
+                <li>Authentication systems</li>
+                <li>Data structures</li>
+                <li>Metadata</li>
+                <li>Research material</li>
+                <li>Historical archives</li>
+                <li>Source materials</li>
+                <li>Internal reports</li>
+                <li>Analytics</li>
+                <li>Security practices</li>
+                <li>Collections</li>
+                <li>Licensing arrangements</li>
+                <li>Vendor information</li>
+                <li>Acquisition discussions</li>
+                <li>Future projects</li>
+                <li>Draft materials</li>
+                <li>Unreleased content</li>
+                <li>Proprietary methodologies</li>
+                <li>Trade secrets</li>
+              </ul>
+              <p>Confidential Information includes information disclosed before or after execution of this Agreement.</p>
+
+              <p><b>3. TRADE SECRET ACKNOWLEDGMENT</b><br>
+              Recipient acknowledges that portions of DGC's Confidential Information may constitute trade secrets.<br>
+              Recipient agrees not to improperly acquire, disclose, transfer, duplicate, exploit, reverse engineer, misappropriate, or use such trade secrets except as expressly authorized.</p>
+
+              <p><b>4. NON-DISCLOSURE OBLIGATIONS</b><br>
+              Recipient shall:</p>
+              <ul>
+                <li>Maintain strict confidentiality.</li>
+                <li>Prevent unauthorized access.</li>
+                <li>Not disclose Confidential Information.</li>
+                <li>Not reproduce Confidential Information except as authorized.</li>
+                <li>Not publish Confidential Information.</li>
+                <li>Not discuss Confidential Information in public forums.</li>
+                <li>Not provide Confidential Information to journalists, competitors, researchers, publications, or third parties.</li>
+                <li>Not upload Confidential Information to unauthorized systems.</li>
+              </ul>
+
+              <p><b>5. DATA SECURITY REQUIREMENTS</b><br>
+              Recipient shall implement reasonable safeguards to protect Confidential Information against:</p>
+              <ul>
+                <li>Theft</li>
+                <li>Loss</li>
+                <li>Unauthorized access</li>
+                <li>Unauthorized disclosure</li>
+                <li>Misuse</li>
+                <li>Accidental transmission</li>
+              </ul>
+              <p>Recipient shall immediately notify DGC of any actual or suspected breach.</p>
+
+              <p><b>6. INTELLECTUAL PROPERTY OWNERSHIP</b><br>
+              All intellectual property owned or controlled by DGC shall remain the exclusive property of DGC.<br>
+              Nothing in this Agreement transfers ownership rights to Recipient.</p>
+
+              <p><b>7. INVENTION ASSIGNMENT</b><br>
+              Any work, invention, documentation, process, publication, design, article, software, archive system, database structure, publication format, editorial methodology, branding element, content system, derivative work, or related intellectual property specifically commissioned by DGC shall belong exclusively to DGC.<br>
+              Recipient assigns to DGC all rights, title, and interest in such commissioned works.</p>
+
+              <p><b>8. REVERSE ENGINEERING PROHIBITION</b><br>
+              Recipient shall not analyze, reverse engineer, deconstruct, duplicate, reproduce, emulate, map, or recreate proprietary DGC systems or methods without written authorization.</p>
+
+              <p><b>9. NON-CIRCUMVENTION</b><br>
+              Recipient shall not use information obtained through DGC to bypass, exploit, solicit, interfere with, recruit from, compete against, or divert relationships, partnerships, contributors, archives, publications, members, commercial opportunities, or business relationships belonging to DGC.</p>
+
+              <p><b>10. RETURN OF PROPERTY</b><br>
+              Upon request, Recipient shall immediately return all:</p>
+              <ul>
+                <li>Documents</li>
+                <li>Media</li>
+                <li>Records</li>
+                <li>Devices</li>
+                <li>Access credentials</li>
+                <li>Communications</li>
+                <li>Copies</li>
+                <li>Derivative copies</li>
+              </ul>
+              <p>belonging to DGC.</p>
+
+              <p><b>11. DESTRUCTION OF COPIES</b><br>
+              Recipient shall permanently destroy unauthorized retained copies when requested by DGC to the extent permitted by law.</p>
+
+              <p><b>12. REPORTING REQUIREMENTS</b><br>
+              Recipient shall immediately report:</p>
+              <ul>
+                <li>Security incidents</li>
+                <li>Unauthorized disclosures</li>
+                <li>Suspected breaches</li>
+                <li>Data loss incidents</li>
+                <li>Credential compromise</li>
+              </ul>
+              <p>upon discovery.</p>
+
+              <p><b>13. INJUNCTIVE RELIEF</b><br>
+              Recipient acknowledges that unauthorized disclosure may cause irreparable harm for which monetary damages alone would be insufficient.<br>
+              DGC shall therefore be entitled to seek temporary, preliminary, and permanent injunctive relief in addition to any other available remedies.</p>
+
+              <p><b>14. ATTORNEYS' FEES</b><br>
+              Where permitted by law, the prevailing party in litigation arising from this Agreement shall be entitled to recover reasonable attorneys' fees and costs.</p>
+
+              <p><b>15. AUDIT RIGHTS</b><br>
+              Where reasonable and legally permissible, DGC may require Recipient to certify compliance with confidentiality obligations.</p>
+
+              <p><b>16. NO LICENSE GRANTED</b><br>
+              No license to DGC intellectual property is granted except as expressly provided in writing.</p>
+
+              <p><b>17. SURVIVAL</b><br>
+              Confidentiality obligations shall survive termination of the relationship between the parties.<br>
+              Trade secret obligations shall survive for as long as the information remains protected under applicable law.</p>
+
+              <p><b>18. SEVERABILITY</b><br>
+              If any provision is determined unenforceable, the remainder of the Agreement shall remain effective.</p>
+
+              <p><b>19. GOVERNING LAW</b><br>
+              This Agreement shall be governed by the laws of the State of Texas.</p>
+
+              <p><b>20. ENTIRE AGREEMENT</b><br>
+              This Agreement constitutes the complete agreement of the parties regarding confidentiality and proprietary information.</p>
+
+              <p><b>21. ACKNOWLEDGMENT</b><br>
+              Recipient acknowledges:<br>
+              Recipient has read this Agreement in full.<br>
+              Recipient understands the obligations created herein.<br>
+              Recipient has had an opportunity to consult legal counsel.<br>
+              Recipient voluntarily enters this Agreement.<br>
+              Recipient intends to be legally bound.</p>
+            </div>
+
+            <div class="sig-section">
+              <span class="sig-title">Signature II — Confidentiality &amp; Non-Disclosure Agreement (Required):</span>
+              <div class="canvas-wrapper">
+                <canvas id="sigCanvas2" class="sig-pad"></canvas>
+              </div>
+              <div class="sig-actions">
+                <span class="switch-prompt"><a onclick="switchContract(1)">&larr; Back to Agreement I (Representation)</a></span>
+                <a onclick="clearPad(2)">[ clear signature II ]</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shared Party Identification Fields -->
+          <div class="shared-fields">
+            <div class="form-row">
+              <label for="name">Full Legal Name:</label>
+              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Enter exact government name">
+            </div>
+
+            <div class="form-row">
+              <label for="jurisdiction">Primary Jurisdiction:</label>
+              <input type="text" id="jurisdiction" name="jurisdiction" required placeholder="City, State / Country">
+            </div>
+
+            <div class="form-row">
+              <label for="email">Contact Email:</label>
+              <input type="text" id="email" name="email" required autocomplete="email" inputmode="email" placeholder="For administrative routing">
+            </div>
+          </div>
+
+          <!-- Hidden Base64 Signature Payloads Sent to Web3Forms -->
+          <input type="hidden" name="signature_representation_agreement" id="signatureData1">
+          <input type="hidden" name="signature_nda_agreement" id="signatureData2">
+
+          <button type="submit" class="submit-btn" onclick="initiateSubmission(event)">FINALIZE BOTH BINDING CONTRACTS</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Final Legal Confirmation Modal Pop-up -->
+  <div id="confirmModal">
+    <div class="modal-box">
+      <h2 class="modal-title">FINAL ATTESTATION &amp; LEGAL ACKNOWLEDGMENT</h2>
+      <div class="modal-body">
+        By clicking confirm below, I hereby warrant and represent that I am at least 18 years of age (or possess full legal capacity in my jurisdiction of residence), that I have thoroughly read, understood, and consented to all terms contained within both the Exclusive Talent Representation, Asset Assignment &amp; Perpetual Licensing Agreement and the Proprietary Information, Intellectual Property, Confidentiality and Non-Disclosure Agreement, and that I enter into these binding legal obligations voluntarily and under my own free will.
+      </div>
+      <div class="modal-buttons">
+        <button type="button" class="modal-btn" onclick="closeModal()">[ Review Again ]</button>
+        <button type="button" class="modal-btn confirm-yes" onclick="executeFinalSubmission()">Confirm &amp; Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Blank White Screen with Unboxed Small Text Animation -->
+  <div id="successView">
+    <div id="animDeadGirls">dead girls</div>
+  </div>
 
 <script>
-  // High-precision responsive signature canvas initialization
-  const canvas = document.getElementById('sigCanvas');
-  const ctx = canvas.getContext('2d');
-  let drawing = false;
+  // Exact 8-second eye animation sequence handling from confessions_2.html
+  const eyeSvg = document.getElementById('eyeSvg');
+  const introScreen = document.getElementById('introEyeScreen');
 
-  function resizeCanvas() {
-    const ratio = Math.max(window.devicePixelRatio || 1, 1);
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * ratio;
-    canvas.height = rect.height * ratio;
-    ctx.scale(ratio, ratio);
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 1.75;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
+  let currentOffsetX = 0;
+  let currentOffsetY = 0;
+
+  function renderEye(isOpen, offsetX = 0, offsetY = 0) {
+    currentOffsetX = offsetX;
+    currentOffsetY = offsetY;
+
+    if (!isOpen) {
+      eyeSvg.innerHTML = `
+        <line x1="8" y1="16" x2="52" y2="16" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+      `;
+    } else {
+      eyeSvg.innerHTML = `
+        <path d="M2 16 Q30 -8 58 16 Q30 40 2 16 Z" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+        <g transform="translate(${offsetX}, ${offsetY})">
+          <circle cx="30" cy="16" r="8" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+          <circle cx="30" cy="16" r="3.5" fill="#000000"/>
+        </g>
+      `;
+    }
   }
 
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
+  function executeSharpBlink() {
+    renderEye(false);
+    setTimeout(() => {
+      renderEye(true, currentOffsetX, currentOffsetY);
+    }, 160);
+  }
 
-  function getMousePos(e) {
+  // Choreographed 8-second timeline
+  renderEye(true, 0, 0);
+
+  setTimeout(executeSharpBlink, 800);                    // 1st blink
+  setTimeout(() => { renderEye(true, -5, 1); }, 1800);   // Look left
+  setTimeout(() => { renderEye(true, 6, -1); }, 3600);   // Look right
+  setTimeout(executeSharpBlink, 5000);                   // 2nd blink
+  setTimeout(() => { renderEye(true, 0, 2); }, 6200);    // Look down
+  setTimeout(() => { renderEye(true, 0, 0); }, 7200);    // Center back
+
+  // Fade out intro overlay at 8 seconds and reveal the contract application
+  setTimeout(() => {
+    introScreen.style.opacity = '0';
+    setTimeout(() => {
+      introScreen.style.display = 'none';
+      document.getElementById('mainApp').style.display = 'flex';
+      resizeAllCanvases();
+    }, 600);
+  }, 8000);
+
+  const pads = {
+    1: {
+      canvas: document.getElementById('sigCanvas1'),
+      ctx: document.getElementById('sigCanvas1').getContext('2d'),
+      drawing: false,
+      strokeCount: 0,
+      statusEl: document.getElementById('status1')
+    },
+    2: {
+      canvas: document.getElementById('sigCanvas2'),
+      ctx: document.getElementById('sigCanvas2').getContext('2d'),
+      drawing: false,
+      strokeCount: 0,
+      statusEl: document.getElementById('status2')
+    }
+  };
+
+  function resizeSingleCanvas(padId) {
+    const pad = pads[padId];
+    const rect = pad.canvas.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+
+    let tempDataUrl = null;
+    if (pad.strokeCount > 0) {
+      tempDataUrl = pad.canvas.toDataURL('image/png');
+    }
+
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    pad.canvas.width = Math.floor(rect.width * ratio);
+    pad.canvas.height = Math.floor(rect.height * ratio);
+    pad.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    pad.ctx.scale(ratio, ratio);
+    pad.ctx.strokeStyle = '#000000';
+    pad.ctx.lineWidth = 1.75;
+    pad.ctx.lineCap = 'round';
+    pad.ctx.lineJoin = 'round';
+
+    if (tempDataUrl) {
+      const img = new Image();
+      img.onload = () => {
+        pad.ctx.drawImage(img, 0, 0, rect.width, rect.height);
+      };
+      img.src = tempDataUrl;
+    }
+  }
+
+  function resizeAllCanvases() {
+    resizeSingleCanvas(1);
+    resizeSingleCanvas(2);
+  }
+
+  window.addEventListener('resize', resizeAllCanvases);
+  window.addEventListener('orientationchange', () => setTimeout(resizeAllCanvases, 120));
+
+  function getPos(canvas, e) {
     const rect = canvas.getBoundingClientRect();
-    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-    const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+    const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
+    const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
     return {
       x: clientX - rect.left,
       y: clientY - rect.top
     };
   }
 
-  canvas.addEventListener('mousedown', (e) => { drawing = true; const pos = getMousePos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); });
-  canvas.addEventListener('mousemove', (e) => { if (!drawing) return; const pos = getMousePos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); });
-  window.addEventListener('mouseup', () => { drawing = false; });
-
-  canvas.addEventListener('touchstart', (e) => { drawing = true; const pos = getMousePos(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); e.preventDefault(); }, {passive: false});
-  canvas.addEventListener('touchmove', (e) => { if (!drawing) return; const pos = getMousePos(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); e.preventDefault(); }, {passive: false});
-  window.addEventListener('touchend', () => { drawing = false; });
-
-  function clearPad() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  function updateSignedBadge(padId) {
+    const pad = pads[padId];
+    if (pad.strokeCount > 0) {
+      pad.statusEl.textContent = 'SIGNED';
+      pad.statusEl.classList.add('signed');
+    } else {
+      pad.statusEl.textContent = 'UNSIGNED';
+      pad.statusEl.classList.remove('signed');
+    }
   }
 
-  function submitContract(e) {
+  [1, 2].forEach((id) => {
+    const pad = pads[id];
+    const c = pad.canvas;
+
+    if (window.PointerEvent) {
+      c.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        c.setPointerCapture(e.pointerId);
+        pad.drawing = true;
+        const pos = getPos(c, e);
+        pad.ctx.beginPath();
+        pad.ctx.moveTo(pos.x, pos.y);
+        e.preventDefault();
+      });
+
+      c.addEventListener('pointermove', (e) => {
+        if (!pad.drawing) return;
+        const pos = getPos(c, e);
+        pad.ctx.lineTo(pos.x, pos.y);
+        pad.ctx.stroke();
+        pad.strokeCount++;
+        updateSignedBadge(id);
+        e.preventDefault();
+      });
+
+      const endPointer = (e) => {
+        if (pad.drawing) {
+          pad.drawing = false;
+          if (c.hasPointerCapture && c.hasPointerCapture(e.pointerId)) {
+            c.releasePointerCapture(e.pointerId);
+          }
+        }
+      };
+
+      c.addEventListener('pointerup', endPointer);
+      c.addEventListener('pointercancel', endPointer);
+    } else {
+      c.addEventListener('mousedown', (e) => {
+        pad.drawing = true;
+        const pos = getPos(c, e);
+        pad.ctx.beginPath();
+        pad.ctx.moveTo(pos.x, pos.y);
+      });
+
+      c.addEventListener('mousemove', (e) => {
+        if (!pad.drawing) return;
+        const pos = getPos(c, e);
+        pad.ctx.lineTo(pos.x, pos.y);
+        pad.ctx.stroke();
+        pad.strokeCount++;
+        updateSignedBadge(id);
+      });
+
+      c.addEventListener('touchstart', (e) => {
+        pad.drawing = true;
+        const pos = getPos(c, e);
+        pad.ctx.beginPath();
+        pad.ctx.moveTo(pos.x, pos.y);
+        e.preventDefault();
+      }, { passive: false });
+
+      c.addEventListener('touchmove', (e) => {
+        if (!pad.drawing) return;
+        const pos = getPos(c, e);
+        pad.ctx.lineTo(pos.x, pos.y);
+        pad.ctx.stroke();
+        pad.strokeCount++;
+        updateSignedBadge(id);
+        e.preventDefault();
+      }, { passive: false });
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
+    pads[1].drawing = false;
+    pads[2].drawing = false;
+  });
+
+  window.addEventListener('touchend', () => {
+    pads[1].drawing = false;
+    pads[2].drawing = false;
+  });
+
+  function clearPad(padId) {
+    const pad = pads[padId];
+    pad.ctx.save();
+    pad.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    pad.ctx.clearRect(0, 0, pad.canvas.width, pad.canvas.height);
+    pad.ctx.restore();
+    pad.strokeCount = 0;
+    updateSignedBadge(padId);
+  }
+
+  function switchContract(targetId) {
+    document.getElementById('tabBtn1').classList.toggle('active', targetId === 1);
+    document.getElementById('tabBtn2').classList.toggle('active', targetId === 2);
+    document.getElementById('panel1').classList.toggle('active', targetId === 1);
+    document.getElementById('panel2').classList.toggle('active', targetId === 2);
+
+    requestAnimationFrame(() => {
+      resizeSingleCanvas(targetId);
+    });
+  }
+
+  function initiateSubmission(e) {
     e.preventDefault();
     const nameInput = document.getElementById('name').value.trim();
     const jurisdictionInput = document.getElementById('jurisdiction').value.trim();
     const emailInput = document.getElementById('email').value.trim();
 
-    if(!nameInput || !jurisdictionInput || !emailInput) {
-      alert('All contract fields must be completed prior to execution.');
+    if (!nameInput || !jurisdictionInput || !emailInput) {
+      alert('All contract identification fields (Full Legal Name, Primary Jurisdiction, and Contact Email) must be completed prior to execution.');
       return;
     }
 
-    // Capture canvas signature data
-    document.getElementById('signatureData').value = canvas.toDataURL('image/png');
+    if (pads[1].strokeCount < 3) {
+      alert('Both agreements must be signed before submitting. Please complete Signature I (Representation & Assignment Agreement).');
+      switchContract(1);
+      return;
+    }
 
-    // Switch view to fullscreen blank white screen with unboxed animation
+    if (pads[2].strokeCount < 3) {
+      alert('Both agreements must be signed before submitting. Please complete Signature II (Confidentiality & Non-Disclosure Agreement).');
+      switchContract(2);
+      return;
+    }
+
+    document.getElementById('confirmModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('confirmModal').style.display = 'none';
+  }
+
+  function executeFinalSubmission() {
+    closeModal();
+
+    document.getElementById('signatureData1').value = pads[1].canvas.toDataURL('image/png');
+    document.getElementById('signatureData2').value = pads[2].canvas.toDataURL('image/png');
+
     document.getElementById('formView').style.display = 'none';
-    document.getElementById('successView').style.display = 'flex';
+    const successView = document.getElementById('successView');
+    successView.style.display = 'flex';
 
-    // Font-cycling animation loop strictly for "dead girls" at a small text size with zero boxing
     const fontPool = [
       '"Times New Roman", Times, serif',
       'Courier New, Courier, monospace',
@@ -330,7 +1035,6 @@
       animEl.style.fontStyle = randomStyle;
     }, 140);
 
-    // Submit form payload programmatically after looping delay, triggering Web3Forms delivery to deadgirlsclub@aol.com and redirecting to deadgirls.org
     setTimeout(() => {
       clearInterval(fontInterval);
       document.getElementById('contractForm').submit();
@@ -340,3 +1044,4 @@
 
 </body>
 </html>
+```[cite: 6]
