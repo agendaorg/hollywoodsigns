@@ -314,7 +314,7 @@
       font-size: 10px;
       margin-top: 6px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       flex-wrap: wrap;
       gap: 6px;
@@ -325,11 +325,6 @@
       cursor: pointer;
       text-decoration: underline;
       padding: 2px 0;
-    }
-
-    .switch-prompt {
-      font-size: 10px;
-      color: #333333;
     }
 
     .submit-btn {
@@ -510,17 +505,6 @@
 
               <p><b>7. Term, Irrevocability &amp; Post-Mortem Extension:</b> This agreement takes effect immediately upon execution and remains in binding legal force for the duration of Assignor's natural life, extending automatically, unconditionally, and indefinitely into post-mortem estate management and eternity. This contract is strictly irrevocable; no cancellation clauses, cooling-off periods, right-to-cure provisions, or unilateral termination mechanisms exist under any circumstances. By affixing a signature below, Assignor warrants full legal capacity, acknowledges that they have read and understood every provision (regardless of length or dense legal phrasing, which Assignor acknowledges they chose not to thoroughly review), and enters this agreement entirely under their own free will while fully cognizant that all autonomous existence, labor, and likeness are permanently transferred to Management with zero recourse.</p>
             </div>
-
-            <div class="sig-section">
-              <span class="sig-title">Signature I (Required):</span>
-              <div class="canvas-wrapper">
-                <canvas id="sigCanvas1" class="sig-pad"></canvas>
-              </div>
-              <div class="sig-actions">
-                <span class="switch-prompt">Next: <a onclick="switchContract(2)">Switch to Agreement II (NDA) &rarr;</a></span>
-                <a onclick="clearPad(1)">[ clear signature I ]</a>
-              </div>
-            </div>
           </div>
 
           <!-- CONTRACT 2 PANEL (NDA) -->
@@ -681,17 +665,6 @@
               Recipient voluntarily enters this Agreement.<br>
               Recipient intends to be legally bound.</p>
             </div>
-
-            <div class="sig-section">
-              <span class="sig-title">Signature II (Required):</span>
-              <div class="canvas-wrapper">
-                <canvas id="sigCanvas2" class="sig-pad"></canvas>
-              </div>
-              <div class="sig-actions">
-                <span class="switch-prompt"><a onclick="switchContract(1)">&larr; Back to Agreement I (Representation)</a></span>
-                <a onclick="clearPad(2)">[ clear signature II ]</a>
-              </div>
-            </div>
           </div>
 
           <!-- Shared Party Identification Fields -->
@@ -712,11 +685,33 @@
             </div>
           </div>
 
+          <!-- Signature I (shown when Agreement I is active, right above submit button) -->
+          <div class="sig-section" id="sigPanel1">
+            <span class="sig-title">Signature I (Required):</span>
+            <div class="canvas-wrapper">
+              <canvas id="sigCanvas1" class="sig-pad"></canvas>
+            </div>
+            <div class="sig-actions">
+              <a onclick="clearPad(1)">[ clear signature I ]</a>
+            </div>
+          </div>
+
+          <!-- Signature II (shown when Agreement II is active, right above submit button) -->
+          <div class="sig-section" id="sigPanel2" style="display: none;">
+            <span class="sig-title">Signature II (Required):</span>
+            <div class="canvas-wrapper">
+              <canvas id="sigCanvas2" class="sig-pad"></canvas>
+            </div>
+            <div class="sig-actions">
+              <a onclick="clearPad(2)">[ clear signature II ]</a>
+            </div>
+          </div>
+
           <!-- Hidden Base64 Signature Payloads Sent to Web3Forms -->
           <input type="hidden" name="signature_representation_agreement" id="signatureData1">
           <input type="hidden" name="signature_nda_agreement" id="signatureData2">
 
-          <button type="submit" class="submit-btn" onclick="initiateSubmission(event)">FINALIZE BOTH BINDING CONTRACTS</button>
+          <button type="submit" class="submit-btn" onclick="initiateSubmission(event)">JOIN CLUB</button>
         </form>
       </div>
 
@@ -969,6 +964,8 @@
     document.getElementById('tabBtn2').classList.toggle('active', targetId === 2);
     document.getElementById('panel1').classList.toggle('active', targetId === 1);
     document.getElementById('panel2').classList.toggle('active', targetId === 2);
+    document.getElementById('sigPanel1').style.display = targetId === 1 ? 'block' : 'none';
+    document.getElementById('sigPanel2').style.display = targetId === 2 ? 'block' : 'none';
 
     requestAnimationFrame(() => {
       resizeSingleCanvas(targetId);
@@ -1044,4 +1041,3 @@
 
 </body>
 </html>
-```[cite: 6]
